@@ -1,5 +1,21 @@
+# IntelliJ IDEA
+.idea/**
+target/**
+.iml
+*.ipr
+*.iws
+*.mvn 
+
+# Maven
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
 # Compiled class file
 *.class
+
+# Mac OS 
+.DS_Store
 
 # Log file
 *.log
