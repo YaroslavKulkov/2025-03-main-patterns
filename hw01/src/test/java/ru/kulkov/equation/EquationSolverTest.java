@@ -63,6 +63,16 @@ public class EquationSolverTest {
     }
 
     @Test
+    void solve_WhenANearZero_ThrowException(){
+        //Написать тест, который проверяет, что коэффициент a не может быть равен 0. В этом случае solve выбрасывает исключение.
+        assertThrows(
+                IllegalArgumentException.class,
+                ()->solver.solve(Double.MIN_VALUE, 5, 5),
+                "При а=0 должно выбрасываться исключение IllegalArgumentException"
+        );
+    }
+
+    @Test
     void solve_WhenNumberIsNaN_ThrowException() {
         //Посмотреть какие еще значения могут принимать числа типа double, кроме числовых и написать тест с их использованием на все коэффициенты.
         // solve должен выбрасывать исключение.
