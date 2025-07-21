@@ -73,6 +73,15 @@ public class EquationSolverTest {
     }
 
     @Test
+    void solve_WhenBMaxValue_ThrowException() {
+        assertThrows(
+                IllegalArgumentException.class,
+                ()->solver.solve(1, Double.MAX_VALUE, 1),
+                "При MAX_VALUE должно выбрасываться исключение IllegalArgumentException"
+        );
+    }
+
+    @Test
     void solve_WhenNumberIsNaN_ThrowException() {
         //Посмотреть какие еще значения могут принимать числа типа double, кроме числовых и написать тест с их использованием на все коэффициенты.
         // solve должен выбрасывать исключение.
