@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EquationSolverTest {
     private static Solver solver;
@@ -34,5 +35,15 @@ public class EquationSolverTest {
         double[] actual = solver.solve(1, 2,1);
         double[] expected = new double[]{-1, -1};
         assertArrayEquals(expected, actual, "Должны быть получены корни (x1=-1, x2=-1)");
+    }
+
+    @Test
+    void solve_WhenAZero_ThrowException(){
+        //Написать тест, который проверяет, что коэффициент a не может быть равен 0. В этом случае solve выбрасывает исключение.
+        assertThrows(
+                IllegalArgumentException.class,
+                ()->solver.solve(0, 5, 5),
+                "При а=0 должно выбрасываться исключение IllegalArgumentException"
+        );
     }
 }
