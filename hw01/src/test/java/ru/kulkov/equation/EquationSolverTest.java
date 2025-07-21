@@ -81,47 +81,29 @@ public class EquationSolverTest {
         );
     }
 
-    @Test
-    void solve_WhenNumberIsNaN_ThrowException() {
+    @ParameterizedTest
+    @MethodSource("provideNaNTestCases")
+    void solve_WhenNumberIsNaN_ThrowExceptionN(double a, double b, double c) {
         //Посмотреть какие еще значения могут принимать числа типа double, кроме числовых и написать тест с их использованием на все коэффициенты.
         // solve должен выбрасывать исключение.
         assertThrows(
                 IllegalArgumentException.class,
-                ()->solver.solve(Double.NaN, 5, 5),
-                "При любом параметре равном NaN должно выбрасываться исключение IllegalArgumentException"
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("provideNaNTestCases")
-    void solve_WhenNumberIsNaN_ThrowExceptionN(double a, double b, double c) {
-        assertThrows(
-                IllegalArgumentException.class,
                 () -> solver.solve(a, b, c),
-                "Ожидалось исключение, если хотя бы одно число — NaN"
+                "При любом параметре равном NaN должно выбрасываться исключение IllegalArgumentException"
         );
     }
 
     private static Stream<Arguments> provideNaNTestCases() {
         return Stream.of(
-                // Все три числа — NaN
+                // Проверки на NaN
                 Arguments.of(Double.NaN, Double.NaN, Double.NaN),
-
-                // Только первое число — NaN
                 Arguments.of(Double.NaN, 1.0, 2.0),
-
-                // Только второе число — NaN
                 Arguments.of(1.0, Double.NaN, 2.0),
-
-                // Только третье число — NaN
                 Arguments.of(1.0, 2.0, Double.NaN),
-
-                // Два числа — NaN, третье — нормальное
                 Arguments.of(Double.NaN, Double.NaN, 3.0),
-
-                // Одно число — NaN, остальные — нормальные (разные комбинации)
                 Arguments.of(1.0, Double.NaN, 3.0),
 
+                // Проверки на INFINITY
                 Arguments.of(Double.POSITIVE_INFINITY, 1.0, 2.0),
                 Arguments.of(1.0, Double.POSITIVE_INFINITY, 2.0),
                 Arguments.of(1.0, 1.0, Double.POSITIVE_INFINITY),
