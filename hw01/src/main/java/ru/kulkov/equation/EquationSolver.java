@@ -3,9 +3,19 @@ package ru.kulkov.equation;
 public class EquationSolver implements Solver{
     @Override
     public double[] solve(double a, double b, double c) {
-        if(a == 1 && b == 0 && c == 1) {
+        double d = findDiscriminant(a, b, c);
+
+        if (d < 0) {
             return new double[0];
         }
-        return null;
+
+        double root1 = (-b + Math.sqrt(d)) / 2 * a;
+        double root2 = (-b - Math.sqrt(d)) / 2 * a;
+        return new double[] {root1, root2};
+
+    }
+
+    protected double findDiscriminant(double a, double b, double c) {
+        return b * b - 4 * a * c;
     }
 }
