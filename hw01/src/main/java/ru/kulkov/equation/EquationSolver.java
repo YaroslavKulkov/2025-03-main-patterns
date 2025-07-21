@@ -16,6 +16,10 @@ public class EquationSolver implements Solver{
 
         double d = findDiscriminant(a, b, c);
 
+        if (Double.isInfinite(d)) {
+            throw new IllegalArgumentException("It is impossible to find the roots with the given parameters");
+        }
+
         if (d < 0) {
             return new double[0];
         }
