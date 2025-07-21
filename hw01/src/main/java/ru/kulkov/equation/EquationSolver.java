@@ -6,6 +6,10 @@ public class EquationSolver implements Solver{
 
     @Override
     public double[] solve(double a, double b, double c) {
+        if (!Double.isFinite(a) || !Double.isFinite(b) || !Double.isFinite(c)) {
+            throw new IllegalArgumentException("Parameter a, b, c must be a real number");
+        }
+
         if (Math.abs(a) <= EPSILON) {
             throw new IllegalArgumentException("The first parameter 'a' must not be equal to 0");
         }
