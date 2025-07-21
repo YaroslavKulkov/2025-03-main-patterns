@@ -27,4 +27,12 @@ public class EquationSolverTest {
         double[] expected = new double[]{1, -1};
         assertArrayEquals(expected, actual, "Должны быть получены корни (x1=1, x2=-1)");
     }
+
+    @Test
+    void solve_WhenAOneBTwoCOne_ReturnOneRoot() {
+        //Написать тест, который проверяет, что для уравнения x^2+2x+1 = 0 есть один корень кратности 2 (x1= x2 = -1)
+        double[] actual = solver.solve(1, 2,1);
+        double[] expected = new double[]{-1, -1};
+        assertArrayEquals(expected, actual, "Должны быть получены корни (x1=-1, x2=-1)");
+    }
 }
