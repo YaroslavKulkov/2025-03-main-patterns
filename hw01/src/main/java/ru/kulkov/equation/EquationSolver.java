@@ -6,11 +6,16 @@ public class EquationSolver implements Solver{
 
     @Override
     public double[] solve(double a, double b, double c) {
+        if (Math.abs(a) <= EPSILON) {
+            throw new IllegalArgumentException("The first parameter 'a' must not be equal to 0");
+        }
+
         double d = findDiscriminant(a, b, c);
 
         if (d < 0) {
             return new double[0];
         }
+
         if (Math.abs(d) <= EPSILON) {
             double root = -b / (2 * a);
             return new double[]{root, root};
