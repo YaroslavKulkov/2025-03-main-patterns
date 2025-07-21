@@ -38,6 +38,16 @@ public class EquationSolverTest {
     }
 
     @Test
+    void solve_WhenDNeaZero_ReturnOneRoot() {
+        //С учетом того, что дискриминант тоже нельзя сравнивать с 0 через знак равенства,
+        // подобрать такие коэффициенты квадратного уравнения для случая одного корня кратности два,
+        // чтобы дискриминант был отличный от нуля, но меньше заданного эпсилон.
+        double[] actual = solver.solve(1, 2.0000000000125,1);
+        double[] expected = new double[]{-1, -1};
+        assertArrayEquals(expected, actual, 1e-10,"Должны быть получены корни (x1=-1, x2=-1)");
+    }
+
+    @Test
     void solve_WhenAZero_ThrowException(){
         //Написать тест, который проверяет, что коэффициент a не может быть равен 0. В этом случае solve выбрасывает исключение.
         assertThrows(
