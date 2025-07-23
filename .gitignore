@@ -4,7 +4,8 @@ target/**
 .iml
 *.ipr
 *.iws
-*.mvn 
+*.mvn
+**/dbnavigator.xml 
 
 # Maven
 !.mvn/wrapper/maven-wrapper.jar
